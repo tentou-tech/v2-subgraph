@@ -3,7 +3,7 @@ import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts/index'
 export const FACTORY_ADDRESS = '0x6d3e2f58954bf4e1d0c4ba26a85a1b49b2e244c6'
 
 export const REFERENCE_TOKEN = '0x1514000000000000000000000000000000000000'
-export const STABLE_TOKEN_PAIRS = ['0xc56c1be28a22ced0270a4d2f45753d2b6300c1ae'] // TODO: change to pair with USDT on mainnet
+export const STABLE_TOKEN_PAIRS = ['0xbdd2fc284edc7294ba29e3aeccb05dfab681ae07'] // TODO: change to pair with USDT on mainnet
 
 // token where amounts should contribute to tracked volume and liquidity
 export const WHITELIST: string[] = [
