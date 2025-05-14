@@ -3,16 +3,16 @@ import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts/index'
 export const FACTORY_ADDRESS = '0x6d3e2f58954bf4e1d0c4ba26a85a1b49b2e244c6'
 
 export const REFERENCE_TOKEN = '0x1514000000000000000000000000000000000000'
-export const STABLE_TOKEN_PAIRS = ['0xbbe72f551df1dbe7136af12b66866afdbae9dad7'] // TODO: change to pair with USDT on mainnet
+export const STABLE_TOKEN_PAIRS = ['0xc56c1be28a22ced0270a4d2f45753d2b6300c1ae'] // TODO: change to pair with USDT on mainnet
 
 // token where amounts should contribute to tracked volume and liquidity
 export const WHITELIST: string[] = [
   '0x1514000000000000000000000000000000000000', // WIP
-  '0xd1fa5456186758b84811b929b4d696178fb56ee3', // USDT
+  '0xf1815bd50389c46847f0bda824ec8da914045d14', // USDT
 ]
 
 export const STABLECOINS = [
-  '0xd1fa5456186758b84811b929b4d696178fb56ee3', // USDT
+  '0xf1815bd50389c46847f0bda824ec8da914045d14', // USDT
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
