@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts'
+import { Address, BigDecimal, BigInt, Bytes } from '@graphprotocol/graph-ts'
 
 import { ERC20 } from '../../generated/Factory/ERC20'
 import { ERC20NameBytes } from '../../generated/Factory/ERC20NameBytes'
@@ -140,4 +140,24 @@ export function createUser(address: Address): void {
 
     user.save()
   }
+}
+
+/**
+ * Convert Bytes to BigInt, with an option for the original data being big-endian or little-endian.
+ * @param input - Data of type Bytes
+ * @param isBigEndian - true if the data is big-endian (Ethereum logs are typically big-endian)
+ * @returns BigInt value
+ */
+export function parseBytesToBigInt(input: Bytes, isBigEndian: boolean): BigInt {
+  let bytes = input
+  if (isBigEndian) {
+    // If it's big-endian, reverse the bytes
+    let reversed = new Uint8Array(input.length)
+    for (let i = 0; i < input.length; i++) {
+      reversed[i] = input[input.length - 1 - i]
+    }
+    bytes = Bytes.fromUint8Array(reversed)
+  }
+
+  return BigInt.fromSignedBytes(bytes)
 }

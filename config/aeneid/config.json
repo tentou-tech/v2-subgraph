@@ -1,5 +1,7 @@
 {
   "network": "aeneid",
   "factory": "0x6d3e2f58954bf4e1d0c4ba26a85a1b49b2e244c6",
-  "startblock": "371515"
+  "startblock": "371515",
+  "mimbokuRouter": "0x8Cc67A90074277E59aaB2927089F1D324D5E1b0a",
+  "mimbokuRouterStartBlock": "4576982"
 }

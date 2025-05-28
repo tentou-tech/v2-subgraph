@@ -310,3 +310,17 @@ type PairTokenLookup @entity(immutable: true) {
   id: ID!
   pair: Pair!
 }
+
+type MimbokuSwap @entity {
+  id: ID!
+  sender: String!
+  to: String!
+  tokenIn: Token!
+  tokenOut: Token!
+  amountIn: BigInt!
+  amountInUSD: BigDecimal!
+  amountOut: BigInt!
+  amountOutUSD: BigDecimal!
+  timestamp: BigInt!
+  txHash: String!
+}
