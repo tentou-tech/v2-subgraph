@@ -2,6 +2,8 @@
   "network": "story",
   "factory": "0x6d3e2f58954bf4e1d0c4ba26a85a1b49b2e244c6",
   "startblock": "742816",
-  "mimbokuRouter": "0x0000000000000000000000000000000000000000",
-  "mimbokuRouterStartBlock": "742816"
+  "mimbokuRouter": "0x852143a47Ac710a851B5117Cbb927bdcd3744e64",
+  "mimbokuRouterStartBlock": "4605079",
+  "prevDeploymentId": "QmU6YEfV8yr21pndAhHCwNbiGs2ktXCQTiK79b6BbMYxMp",
+  "continueFromBlock": "4605078"
 }
