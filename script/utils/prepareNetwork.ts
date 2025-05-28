@@ -18,12 +18,12 @@ export enum NETWORK {
   WORLDCHAIN = 'worldchain-mainnet',
   ZORA = 'zora-mainnet',
   STORY_AENEID = 'aeneid',
-  STORY = 'story'
+  STORY = 'story',
 }
 
 export enum SUBGRAPH_TYPE {
   V2_TOKENS = 'v2-tokens',
-  V2 = 'v2'
+  V2 = 'v2',
 }
 
 const CHAIN_CONSTANTS_FILE_NAME = 'chain.ts'
@@ -37,7 +37,7 @@ export function validateNetwork(network: string) {
 
   if (
     !Object.values(NETWORK)
-      .map(n => n.toString())
+      .map((n) => n.toString())
       .includes(network)
   ) {
     console.error('invalid network parameter passed, pass either: ', ...Object.values(NETWORK))
@@ -53,7 +53,7 @@ export function validateSubgraphType(subgraphType: string) {
 
   if (
     !Object.values(SUBGRAPH_TYPE)
-      .map(n => n.toString())
+      .map((n) => n.toString())
       .includes(subgraphType)
   ) {
     console.error('invalid subgraph name parameter passed, pass either: ', ...Object.values(SUBGRAPH_TYPE))
@@ -101,7 +101,7 @@ export function getAlchemyDeploymentParams(): {
   return {
     node: process.env.ALCHEMY_DEPLOY_URL,
     ipfs: process.env.ALCHEMY_IPFS_URL,
-    deployKey: process.env.ALCHEMY_DEPLOY_KEY
+    deployKey: process.env.ALCHEMY_DEPLOY_KEY,
   }
 }
 
