@@ -44,7 +44,7 @@ type Token @entity {
   totalLiquidity: BigDecimal!
 
   # derived prices
-  derivedETH: BigDecimal!
+  derivedIP: BigDecimal!
 
   # derived fields
   tokenDayData: [TokenDayData!]! @derivedFrom(field: "token")
@@ -186,7 +186,7 @@ type Swap @entity {
 # stores for USD calculations
 type Bundle @entity {
   id: ID!
-  ethPrice: BigDecimal! # price of ETH usd
+  IPPriceUSD: BigDecimal! # price of IP in USD
 }
 
 # Data accumulated and condensed into day stats for all of Uniswap
@@ -309,4 +309,18 @@ type TokenHourData @entity {
 type PairTokenLookup @entity(immutable: true) {
   id: ID!
   pair: Pair!
+}
+
+type MimbokuSwap @entity {
+  id: ID!
+  sender: String!
+  to: String!
+  tokenIn: Token!
+  tokenOut: Token!
+  amountIn: BigInt!
+  amountInUSD: BigDecimal!
+  amountOut: BigInt!
+  amountOutUSD: BigDecimal!
+  timestamp: BigInt!
+  txHash: String!
 }
