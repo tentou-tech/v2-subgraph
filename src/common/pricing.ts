@@ -8,7 +8,7 @@ import {
   REFERENCE_TOKEN,
   STABLE_TOKEN_PAIRS,
   STABLECOINS,
-  WHITELIST,
+  WHITELIST
 } from './chain'
 import { ADDRESS_ZERO, ONE_BD, ZERO_BD } from './constants'
 
@@ -59,7 +59,7 @@ export function safeDiv(amount0: BigDecimal, amount1: BigDecimal): BigDecimal {
  * @todo update to be derived IP (add stablecoin estimates)
  **/
 export function findEthPerToken(token: Token): BigDecimal {
-  if (token.id == REFERENCE_TOKEN) {
+  if (token.id == REFERENCE_TOKEN || token.id == ADDRESS_ZERO) {
     return ONE_BD
   }
 
@@ -135,7 +135,10 @@ export function getTrackedVolumeUSD(
 
   // both are whitelist tokens, take average of both amounts
   if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
-    return tokenAmount0.times(price0).plus(tokenAmount1.times(price1)).div(BigDecimal.fromString('2'))
+    return tokenAmount0
+      .times(price0)
+      .plus(tokenAmount1.times(price1))
+      .div(BigDecimal.fromString('2'))
   }
 
   // take full value of the whitelisted token amount
