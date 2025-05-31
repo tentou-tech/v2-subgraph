@@ -1,13 +1,14 @@
 /* eslint-disable prefer-const */
-import { Address, BigDecimal, BigInt, Bytes } from '@graphprotocol/graph-ts'
+import { Address, BigDecimal, BigInt, Bytes, log } from '@graphprotocol/graph-ts'
 
 import { ERC20 } from '../../generated/Factory/ERC20'
 import { ERC20NameBytes } from '../../generated/Factory/ERC20NameBytes'
 import { ERC20SymbolBytes } from '../../generated/Factory/ERC20SymbolBytes'
-import { User } from '../../generated/schema'
+import { Token, User } from '../../generated/schema'
 import { SKIP_TOTAL_SUPPLY, TokenDefinition } from './chain'
 import { ONE_BI, ZERO_BD, ZERO_BI } from './constants'
 import { getStaticDefinition } from './tokenDefinition'
+import { findEthPerToken } from './pricing'
 
 export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
   let bd = BigDecimal.fromString('1')
@@ -160,4 +161,27 @@ export function parseBytesToBigInt(input: Bytes, isBigEndian: boolean): BigInt {
   }
 
   return BigInt.fromSignedBytes(bytes)
+}
+
+export function createDefaultToken(tokenAddress: string): Token {
+  let token = new Token(tokenAddress)
+  log.info('Creating default token for {}', [tokenAddress])
+  token.symbol = fetchTokenSymbol(Address.fromString(tokenAddress))
+  token.name = fetchTokenName(Address.fromString(tokenAddress))
+  token.totalSupply = fetchTokenTotalSupply(Address.fromString(tokenAddress))
+  const decimals = fetchTokenDecimals(Address.fromString(tokenAddress))
+  if (decimals === null) {
+    token.decimals = BigInt.fromI32(18)
+  } else {
+    token.decimals = decimals
+  }
+
+  token.derivedIP = findEthPerToken(token as Token)
+  token.tradeVolume = ZERO_BD
+  token.tradeVolumeUSD = ZERO_BD
+  token.untrackedVolumeUSD = ZERO_BD
+  token.totalLiquidity = ZERO_BD
+  token.txCount = ZERO_BI
+
+  return token
 }

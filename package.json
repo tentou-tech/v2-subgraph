@@ -9,10 +9,10 @@
     "codegen": "graph clean && graph codegen v2-subgraph.yaml",
     "create-local": "graph create mimboku-v2 --node http://127.0.0.1:8020",
     "create-testnet": "graph create mimboku-v2 --node https://graph-node-testnet.tentou.tech",
-    "create-prod": "graph create mimboku-v2 --node https://graph-node.tentou.tech/",
+    "create-prod": "graph create mimboku-v2-1 --node https://graph-node.tentou.tech/",
     "deploy-local": "graph deploy mimboku-v2 --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020 v2-subgraph.yaml",
     "deploy-testnet": "graph deploy mimboku-v2 --ipfs http://ipfs.tentou.tech:5001 --node https://graph-node-testnet.tentou.tech v2-subgraph.yaml",
-    "deploy-prod": "graph deploy mimboku-v2 --ipfs http://ipfs.tentou.tech:5001 --node https://graph-node.tentou.tech/ v2-subgraph.yaml"
+    "deploy-prod": "graph deploy mimboku-v2-1 --ipfs http://ipfs.tentou.tech:5001 --node https://graph-node.tentou.tech/ v2-subgraph.yaml"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.64.1",
@@ -24,8 +24,8 @@
     "@uniswap/eslint-config": "^1.2.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
-    "eslint-config-prettier": "^6.1.0",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^6.1.0",
     "fs-extra": "^11.1.0",
     "mustache": "^3.1.0",
     "prettier": "^1.18.2",
