@@ -1,9 +1,9 @@
 {
   "network": "story",
   "factory": "0x6d3e2f58954bf4e1d0c4ba26a85a1b49b2e244c6",
-  "startblock": "4605079",
+  "startblock": "4748001",
   "mimbokuRouter": "0x852143a47Ac710a851B5117Cbb927bdcd3744e64",
-  "mimbokuRouterStartBlock": "4605079",
-  "prevDeploymentId": "QmP9XWUrcUiV82be2qf26PLvsykwP1PjnPCw7hdNwMmScP",
-  "continueFromBlock": "4605078"
+  "mimbokuRouterStartBlock": "4748001",
+  "prevDeploymentId": "QmNho1WjNpfK8S1bYpudkVQy8QC6T7yoebCGS2nADa13u5",
+  "continueFromBlock": "4748000"
 }
