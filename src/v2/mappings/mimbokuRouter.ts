@@ -9,7 +9,7 @@ import {
   TOPIC_MIMBOKU_SWAP,
   TOPIC_SWAP_V2,
   TOPIC_WITHDRAWAL,
-  ZERO_BD
+  ZERO_BD,
 } from '../../common/constants'
 import { convertTokenToDecimal, createDefaultToken, parseBytesToBigInt } from '../../common/helpers'
 import { getTrackedVolumeUSD } from '../../common/pricing'

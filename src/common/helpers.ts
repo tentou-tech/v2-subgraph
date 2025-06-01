@@ -5,10 +5,9 @@ import { ERC20 } from '../../generated/Factory/ERC20'
 import { ERC20NameBytes } from '../../generated/Factory/ERC20NameBytes'
 import { ERC20SymbolBytes } from '../../generated/Factory/ERC20SymbolBytes'
 import { Token, User } from '../../generated/schema'
-import { SKIP_TOTAL_SUPPLY, TokenDefinition } from './chain'
-import { ONE_BI, ZERO_BD, ZERO_BI } from './constants'
+import { REFERENCE_TOKEN, SKIP_TOTAL_SUPPLY, TokenDefinition } from './chain'
+import { ADDRESS_ZERO, ONE_BD, ONE_BI, ZERO_BD, ZERO_BI } from './constants'
 import { getStaticDefinition } from './tokenDefinition'
-import { findEthPerToken } from './pricing'
 
 export function exponentToBigDecimal(decimals: BigInt): BigDecimal {
   let bd = BigDecimal.fromString('1')
@@ -176,7 +175,10 @@ export function createDefaultToken(tokenAddress: string): Token {
     token.decimals = decimals
   }
 
-  token.derivedIP = findEthPerToken(token as Token)
+  token.derivedIP = ZERO_BD
+  if (tokenAddress == REFERENCE_TOKEN || tokenAddress == ADDRESS_ZERO) {
+    token.derivedIP = ONE_BD
+  }
   token.tradeVolume = ZERO_BD
   token.tradeVolumeUSD = ZERO_BD
   token.untrackedVolumeUSD = ZERO_BD
